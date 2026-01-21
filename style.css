@@ -1,0 +1,20 @@
+.stApp {
+    background-color: #0e1117;
+    color: #ffffff;
+}
+.stChatMessage {
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+section[data-testid="stSidebar"] {
+    background-color: #262730;
+}
+div.stButton > button {
+    background-color: #FF4B4B;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 10px 24px;
+    font-weight: bold;
+}
