@@ -42,6 +42,15 @@ This project was built to satisfy the following core requirements:
 3.  **Ask:** In the main chat bar, ask a question *specific* to the text you just pasted.
     * *Example:* "What is the launch offer mentioned in the text?"
 4.  **Result:** Jarvis will answer using *only* the context you provided.
+## 📸 Project Demo
 
+**1. App Interface**
+![App Interface](output%20images/output1.png)
+
+**2. RAG Response Example**
+![RAG Response](output%20images/output2.png)
+
+**3. Additional Feature**
+![Feature Demo](output%20images/output3.png)
 ---
 *Submitted by Bhanu Mahesh B.*
