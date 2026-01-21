@@ -4,7 +4,7 @@ from huggingface_hub import InferenceClient
 
 st.set_page_config(page_title="Diligent Jarvis", page_icon="🤖")
 
-# My HuggingFace API Key bhanumahesh
+# My HuggingFace API Key bhanumahesh # my token " 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 "
 HF_TOKEN = HF_TOKEN = os.getenv("HF_TOKEN") # Examiner: Maam/sir Please add your Hugging Face Token here
 
 # Create AI Client (cached)
