@@ -1,20 +1,27 @@
 import streamlit as st
 from huggingface_hub import InferenceClient
-# App Configuration
 
+# -------------------------------
+# App Configuration
+# -------------------------------
 st.set_page_config(page_title="Diligent Jarvis", page_icon="🤖")
 
-# My HuggingFace API Key bhanumahesh
-HF_TOKEN = HF_TOKEN = os.getenv("HF_TOKEN") # Examiner: Maam/sir Please add your Hugging Face Token here
+# -------------------------------
+# HuggingFace API Key
+# -------------------------------
+HF_TOKEN = "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"
 
+# -------------------------------
 # Create AI Client (cached)
+# -------------------------------
 @st.cache_resource
 def create_client():
     client = InferenceClient(token=HF_TOKEN)
     return client
 
-
+# -------------------------------
 # AI Response Logic
+# -------------------------------
 def get_ai_response(question, company_context):
     client = create_client()
 
@@ -45,16 +52,16 @@ def get_ai_response(question, company_context):
     except Exception as error:
         return "AI connection error: " + str(error)
 
-
-# for UI desgin for Diligent jarvis assignmet
-
+# -------------------------------
+# UI Layout
+# -------------------------------
 st.title("🤖 Diligent Enterprise Jarvis")
 
-# for Store company knowledge
+# Store company knowledge
 if "knowledge_base" not in st.session_state:
     st.session_state.knowledge_base = ""
 
-# for Sidebar for training data
+# Sidebar for training data
 with st.sidebar:
     st.header("Knowledge Base")
     company_data = st.text_area("Paste Company Data Here:", height=150)
@@ -63,18 +70,18 @@ with st.sidebar:
         st.session_state.knowledge_base = company_data
         st.success("Knowledge base updated successfully!")
 
-# for Store chat messages
+# Store chat messages
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = [
         {"role": "assistant", "content": "System ready. Ask your questions."}
     ]
 
-# for Display chat history
+# Display chat history
 for message in st.session_state.chat_history:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
-# for User input
+# User input
 user_question = st.chat_input("Ask a question...")
 
 if user_question:
@@ -86,7 +93,7 @@ if user_question:
     with st.chat_message("user"):
         st.write(user_question)
 
-    # to Generate AI reply
+    # Generate AI reply
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             if st.session_state.knowledge_base:
@@ -97,7 +104,7 @@ if user_question:
             ai_reply = get_ai_response(user_question, context_data)
             st.write(ai_reply)
 
-    # Save AI reply here 
+    # Save AI reply
     st.session_state.chat_history.append(
         {"role": "assistant", "content": ai_reply}
     )
